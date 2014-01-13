@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZMBViewController : UIViewController
+@interface ZMBViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
