@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
 
+    self.title = @"iOS Bootcamp";
+    
     NSString *student1 = [NSString stringWithFormat:@"Nicholas"];
     NSString *student2 = [NSString stringWithFormat:@"Zuri"];
     NSString *student3 = [NSString stringWithFormat:@"Chad"];
