@@ -21,6 +21,8 @@
 		8A3C2D961884616F004A4B1D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3C2D781884616F004A4B1D /* UIKit.framework */; };
 		8A3C2D9E1884616F004A4B1D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A3C2D9C1884616F004A4B1D /* InfoPlist.strings */; };
 		8A3C2DA01884616F004A4B1D /* FirstDayDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C2D9F1884616F004A4B1D /* FirstDayDemoTests.m */; };
+		8AAA517D1885E60A00E81E87 /* ZMBStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA517C1885E60A00E81E87 /* ZMBStudent.m */; };
+		8AAA517F1885EC7400E81E87 /* Bootcamp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA517E1885EC7400E81E87 /* Bootcamp.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		8A3C2D9B1884616F004A4B1D /* FirstDayDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FirstDayDemoTests-Info.plist"; sourceTree = "<group>"; };
 		8A3C2D9D1884616F004A4B1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8A3C2D9F1884616F004A4B1D /* FirstDayDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstDayDemoTests.m; sourceTree = "<group>"; };
+		8AAA517B1885E60A00E81E87 /* ZMBStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBStudent.h; sourceTree = "<group>"; };
+		8AAA517C1885E60A00E81E87 /* ZMBStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBStudent.m; sourceTree = "<group>"; };
+		8AAA517E1885EC7400E81E87 /* Bootcamp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Bootcamp.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +122,8 @@
 				8A3C2D861884616F004A4B1D /* Main.storyboard */,
 				8A0817341884BBB900D57DC3 /* ZMBTableViewController.h */,
 				8A0817351884BBB900D57DC3 /* ZMBTableViewController.m */,
+				8AAA517B1885E60A00E81E87 /* ZMBStudent.h */,
+				8AAA517C1885E60A00E81E87 /* ZMBStudent.m */,
 				8A3C2D8C1884616F004A4B1D /* Images.xcassets */,
 				8A3C2D7B1884616F004A4B1D /* Supporting Files */,
 			);
@@ -126,6 +133,7 @@
 		8A3C2D7B1884616F004A4B1D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8AAA517E1885EC7400E81E87 /* Bootcamp.plist */,
 				8A3C2D7C1884616F004A4B1D /* FirstDayDemo-Info.plist */,
 				8A3C2D7D1884616F004A4B1D /* InfoPlist.strings */,
 				8A3C2D801884616F004A4B1D /* main.m */,
@@ -230,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3C2D8D1884616F004A4B1D /* Images.xcassets in Resources */,
+				8AAA517F1885EC7400E81E87 /* Bootcamp.plist in Resources */,
 				8A3C2D7F1884616F004A4B1D /* InfoPlist.strings in Resources */,
 				8A3C2D881884616F004A4B1D /* Main.storyboard in Resources */,
 			);
@@ -253,6 +262,7 @@
 				8A3C2D851884616F004A4B1D /* ZMBAppDelegate.m in Sources */,
 				8A3C2D811884616F004A4B1D /* main.m in Sources */,
 				8A0817361884BBB900D57DC3 /* ZMBTableViewController.m in Sources */,
+				8AAA517D1885E60A00E81E87 /* ZMBStudent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

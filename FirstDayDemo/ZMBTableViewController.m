@@ -11,6 +11,7 @@
 @interface ZMBTableViewController ()
 @property (strong, nonatomic) NSArray *myStudentsArray;
 @property (strong, nonatomic) NSArray *myInstructorsArray;
+@property (strong, nonatomic) NSArray *myPlistArray;
 
 @end
 
@@ -58,6 +59,11 @@
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     [refresh addTarget:self action:@selector(doSomething) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
+    
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
+    self.myPlistArray = [NSArray arrayWithContentsOfFile:plistPath];
+    
+    NSLog(@"%@", self.myPlistArray);
 }
 
 - (void)stopRefresh
