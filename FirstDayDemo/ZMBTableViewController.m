@@ -12,6 +12,7 @@
 @property (strong, nonatomic) NSArray *myStudentsArray;
 @property (strong, nonatomic) NSArray *myInstructorsArray;
 @property (strong, nonatomic) NSArray *myPlistArray;
+@property (strong, nonatomic) NSMutableArray *myPlistNamesArray;
 
 @end
 
@@ -60,10 +61,27 @@
     [refresh addTarget:self action:@selector(doSomething) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
+#pragma mark - load array from plist
+    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
     self.myPlistArray = [NSArray arrayWithContentsOfFile:plistPath];
+//    NSDictionary *plistKeyDict = [self.myPlistArray objectAtIndex:0];
+//    NSDictionary *nameKeyDict = [plistKeyDict objectForKey:@"name"];
+    
+    self.myPlistNamesArray = [[NSMutableArray alloc] initWithCapacity:self.myPlistArray.count];
+    
+    for (int i=0; i<15; i++)
+    {
+        NSDictionary *plistKeyDict = [self.myPlistArray objectAtIndex:i];
+        NSArray *newArray = [plistKeyDict objectForKey:@"name"];
+        [self.myPlistNamesArray addObject:newArray];
+    }
     
     NSLog(@"%@", self.myPlistArray);
+    NSLog(@"%@", self.myInstructorsArray);
+//    NSLog(@"%@", plistKeyDict);
+//    NSLog(@"%@", nameKeyDict);
+    NSLog(@"%@", self.myPlistNamesArray);
 }
 
 - (void)stopRefresh
