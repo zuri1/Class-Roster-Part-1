@@ -10,6 +10,7 @@
 
 @interface ZMBTableViewController ()
 @property (strong, nonatomic) NSArray *myStudentsArray;
+@property (strong, nonatomic) NSArray *myInstructorsArray;
 
 @end
 
@@ -46,6 +47,11 @@
     
     self.myStudentsArray = [NSArray arrayWithObjects:student1,student2,student3,student4,student5,student6,student7,student8,student9,student10,student11,student12,student13,student14,student15, nil];
     
+    NSString *instructor1 = [NSString stringWithFormat:@"John"];
+    NSString *instructor2 = [NSString stringWithFormat:@"Brad"];
+    
+    self.myInstructorsArray = [NSArray arrayWithObjects:instructor1,instructor2, nil];
+    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     [refresh addTarget:self action:@selector(doSomething) forControlEvents:UIControlEventValueChanged];
@@ -72,12 +78,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section==0){
     return self.myStudentsArray.count;
+    } else {
+        return self.myInstructorsArray.count;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section==0){
+        return @"Students";
+    } else {
+        return @"Instructors";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,8 +104,11 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    if (indexPath.section==0){
     cell.textLabel.text = [self.myStudentsArray objectAtIndex:indexPath.row];
-    
+    } else {
+        cell.textLabel.text = [self.myInstructorsArray objectAtIndex:indexPath.row];
+    }
     return cell;
 }
 
