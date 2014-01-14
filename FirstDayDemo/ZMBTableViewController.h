@@ -1,5 +1,5 @@
 //
-//  ZMBViewController.h
+//  ZMBTableViewController.h
 //  FirstDayDemo
 //
 //  Created by Zuri Biringer on 1/13/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZMBViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ZMBTableViewController : UITableViewController
 
 @end
