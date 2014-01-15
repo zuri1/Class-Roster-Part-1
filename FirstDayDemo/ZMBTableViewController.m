@@ -7,6 +7,7 @@
 //
 
 #import "ZMBTableViewController.h"
+#import "ZMBStudent.h"
 
 @interface ZMBTableViewController ()
 @property (strong, nonatomic) NSArray *myStudentsArray;
@@ -33,29 +34,6 @@
 
     self.title = @"iOS Bootcamp";
     
-    NSString *student1 = [NSString stringWithFormat:@"Nicholas"];
-    NSString *student2 = [NSString stringWithFormat:@"Zuri"];
-    NSString *student3 = [NSString stringWithFormat:@"Chad"];
-    NSString *student4 = [NSString stringWithFormat:@"Spencer"];
-    NSString *student5 = [NSString stringWithFormat:@"Raghav"];
-    NSString *student6 = [NSString stringWithFormat:@"Timothy"];
-    NSString *student7 = [NSString stringWithFormat:@"Ivan"];
-    NSString *student8 = [NSString stringWithFormat:@"Richard"];
-    NSString *student9 = [NSString stringWithFormat:@"Bennett"];
-    NSString *student10 = [NSString stringWithFormat:@"Christopher"];
-    NSString *student11 = [NSString stringWithFormat:@"Matt"];
-    NSString *student12 = [NSString stringWithFormat:@"Andrew"];
-    NSString *student13 = [NSString stringWithFormat:@"Jeff"];
-    NSString *student14 = [NSString stringWithFormat:@"Steven"];
-    NSString *student15 = [NSString stringWithFormat:@"Yair"];
-    
-    self.myStudentsArray = [NSArray arrayWithObjects:student1,student2,student3,student4,student5,student6,student7,student8,student9,student10,student11,student12,student13,student14,student15, nil];
-    
-    NSString *instructor1 = [NSString stringWithFormat:@"John"];
-    NSString *instructor2 = [NSString stringWithFormat:@"Brad"];
-    
-    self.myInstructorsArray = [NSArray arrayWithObjects:instructor1,instructor2, nil];
-    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     [refresh addTarget:self action:@selector(doSomething) forControlEvents:UIControlEventValueChanged];
@@ -70,18 +48,14 @@
     
     self.myPlistNamesArray = [[NSMutableArray alloc] initWithCapacity:self.myPlistArray.count];
     
-    for (int i=0; i<15; i++)
+    for (NSDictionary *dictionary in self.myPlistArray)
     {
-        NSDictionary *plistKeyDict = [self.myPlistArray objectAtIndex:i];
-        NSArray *newArray = [plistKeyDict objectForKey:@"name"];
-        [self.myPlistNamesArray addObject:newArray];
+        ZMBStudent *newStudent = [[ZMBStudent alloc] init];
+        newStudent.studentName = [dictionary objectForKey:@"name"];
+        [self.myPlistNamesArray addObject:newStudent];
+        NSLog(@"%@", self.myPlistNamesArray);
     }
     
-    NSLog(@"%@", self.myPlistArray);
-    NSLog(@"%@", self.myInstructorsArray);
-//    NSLog(@"%@", plistKeyDict);
-//    NSLog(@"%@", nameKeyDict);
-    NSLog(@"%@", self.myPlistNamesArray);
 }
 
 - (void)stopRefresh
@@ -104,37 +78,31 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0){
-    return self.myStudentsArray.count;
-    } else {
-        return self.myInstructorsArray.count;
-    }
+    return self.myPlistNamesArray.count;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if(section==0){
-        return @"Students";
-    } else {
-        return @"Instructors";
-    }
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if(section==0){
+//        return @"Students";
+//    } else {
+//        return @"Instructors";
+//    }
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section==0){
-    cell.textLabel.text = [self.myStudentsArray objectAtIndex:indexPath.row];
-    } else {
-        cell.textLabel.text = [self.myInstructorsArray objectAtIndex:indexPath.row];
-    }
+//    ZMBStudent *tempStudent = [self.myPlistNamesArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[self.myPlistNamesArray objectAtIndex:indexPath.row] studentName];
+    
     return cell;
 }
 
