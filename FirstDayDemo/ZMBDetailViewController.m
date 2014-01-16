@@ -86,7 +86,7 @@
         
         self.theImageView.image = editedImage;
         
-        NSLog(@" checking asdasdasgit");
+        NSLog(@" checking mo git");
         
         ALAssetsLibrary *assetsLibrary = [ALAssetsLibrary new];
         
