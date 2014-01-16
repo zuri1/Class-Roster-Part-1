@@ -11,6 +11,8 @@
 @interface ZMBStudent : NSObject
 
 @property (strong, nonatomic) NSString *studentName;
+@property (strong, nonatomic) NSString *studentTwitterName;
+@property (strong, nonatomic) NSString *studentGithubName;
 @property (strong, nonatomic) UIImage *studentImage;
 
 -(id)initWithStudentName:(NSString *)aStudentName

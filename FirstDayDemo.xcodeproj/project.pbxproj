@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A0817361884BBB900D57DC3 /* ZMBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0817351884BBB900D57DC3 /* ZMBTableViewController.m */; };
+		8A21EA8918873A560097EE45 /* ZMBDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21EA8818873A560097EE45 /* ZMBDetailViewController.m */; };
 		8A3C2D751884616F004A4B1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3C2D741884616F004A4B1D /* Foundation.framework */; };
 		8A3C2D771884616F004A4B1D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3C2D761884616F004A4B1D /* CoreGraphics.framework */; };
 		8A3C2D791884616F004A4B1D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3C2D781884616F004A4B1D /* UIKit.framework */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		8A0817341884BBB900D57DC3 /* ZMBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBTableViewController.h; sourceTree = "<group>"; };
 		8A0817351884BBB900D57DC3 /* ZMBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBTableViewController.m; sourceTree = "<group>"; };
+		8A21EA8718873A560097EE45 /* ZMBDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBDetailViewController.h; sourceTree = "<group>"; };
+		8A21EA8818873A560097EE45 /* ZMBDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBDetailViewController.m; sourceTree = "<group>"; };
 		8A3C2D711884616F004A4B1D /* FirstDayDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstDayDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3C2D741884616F004A4B1D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8A3C2D761884616F004A4B1D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,8 @@
 				8A3C2D861884616F004A4B1D /* Main.storyboard */,
 				8A0817341884BBB900D57DC3 /* ZMBTableViewController.h */,
 				8A0817351884BBB900D57DC3 /* ZMBTableViewController.m */,
+				8A21EA8718873A560097EE45 /* ZMBDetailViewController.h */,
+				8A21EA8818873A560097EE45 /* ZMBDetailViewController.m */,
 				8AAA517B1885E60A00E81E87 /* ZMBStudent.h */,
 				8AAA517C1885E60A00E81E87 /* ZMBStudent.m */,
 				8A3C2D8C1884616F004A4B1D /* Images.xcassets */,
@@ -261,6 +266,7 @@
 			files = (
 				8A3C2D851884616F004A4B1D /* ZMBAppDelegate.m in Sources */,
 				8A3C2D811884616F004A4B1D /* main.m in Sources */,
+				8A21EA8918873A560097EE45 /* ZMBDetailViewController.m in Sources */,
 				8A0817361884BBB900D57DC3 /* ZMBTableViewController.m in Sources */,
 				8AAA517D1885E60A00E81E87 /* ZMBStudent.m in Sources */,
 			);
