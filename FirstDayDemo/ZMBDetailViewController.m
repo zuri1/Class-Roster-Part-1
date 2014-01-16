@@ -86,6 +86,8 @@
         
         self.theImageView.image = editedImage;
         
+        NSLog(@" checking git");
+        
         ALAssetsLibrary *assetsLibrary = [ALAssetsLibrary new];
         
         if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusDenied || [ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusRestricted) {
