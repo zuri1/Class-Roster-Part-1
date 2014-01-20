@@ -28,15 +28,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Fno-lC-SSO">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Fno-lC-SSO" customClass="ZMBCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fno-lC-SSO" id="RuT-3x-DbL">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="studentName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4A-WY-QXx">
+                                            <rect key="frame" x="55" y="11" width="227" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FmQ-c4-Cnz" kind="push" id="fsa-Ch-qLf"/>
+                                    <outlet property="studentName" destination="n4A-WY-QXx" id="oKe-mn-6ze"/>
+                                    <segue destination="FmQ-c4-Cnz" kind="push" identifier="detailViewSegue" id="02Y-sW-njV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,19 +61,19 @@
             </objects>
             <point key="canvasLocation" x="326" y="37"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Detail View Controller - set image-->
         <scene sceneID="jfi-AV-jSI">
             <objects>
                 <viewController id="FmQ-c4-Cnz" customClass="ZMBDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4Pm-8N-lPN"/>
-                        <viewControllerLayoutGuide type="bottom" id="JOM-1I-lsm"/>
+                        <viewControllerLayoutGuide type="top" id="rmh-ro-kKO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xf5-Uw-HMe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="z37-mz-6Yf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6DW-F8-bH6">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6DW-F8-bH6">
                                 <rect key="frame" x="0.0" y="480" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -82,12 +92,16 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="6DW-F8-bH6" firstAttribute="top" secondItem="4Pm-8N-lPN" secondAttribute="bottom" constant="416" id="dvI-pC-cRP"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="vF6-5f-JFP"/>
+                    <navigationItem key="navigationItem" title="set image" id="vF6-5f-JFP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QGh-jC-wM3">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="goBackToTableViewController:" destination="FmQ-c4-Cnz" id="5MS-Or-uFH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="theImageView" destination="a5W-t3-pIl" id="kd1-10-d5N"/>
@@ -95,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ag5-CE-gqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="820" y="13"/>
+            <point key="canvasLocation" x="742" y="37"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -11,7 +11,9 @@
 
 @interface ZMBDetailViewController ()
 
-@property (strong, nonatomic) IBOutlet UIImageView *theImageView;
+- (IBAction)goBackToTableViewController:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIImageView *theImageView;
 
 @end
 
@@ -26,10 +28,15 @@
     return self;
 }
 
+- (IBAction)goBackToTableViewController:(id)sender {
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,8 +92,6 @@
         UIImage *editedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         
         self.theImageView.image = editedImage;
-        
-        NSLog(@" checking mo git");
         
         ALAssetsLibrary *assetsLibrary = [ALAssetsLibrary new];
         

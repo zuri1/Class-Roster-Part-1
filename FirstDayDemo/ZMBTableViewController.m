@@ -8,12 +8,13 @@
 
 #import "ZMBTableViewController.h"
 #import "ZMBStudent.h"
+#import "ZMBDetailViewController.h"
+#import "ZMBCell.h"
 
-@interface ZMBTableViewController ()
-@property (strong, nonatomic) NSArray *myStudentsArray;
-@property (strong, nonatomic) NSArray *myInstructorsArray;
+@interface ZMBTableViewController () <ZMBDetailViewControllerDelegate>
+
 @property (strong, nonatomic) NSArray *myPlistArray;
-@property (strong, nonatomic) NSMutableArray *myPlistNamesArray;
+@property (strong, nonatomic) NSMutableArray *students;
 
 @end
 
@@ -46,14 +47,16 @@
 //    NSDictionary *plistKeyDict = [self.myPlistArray objectAtIndex:0];
 //    NSDictionary *nameKeyDict = [plistKeyDict objectForKey:@"name"];
     
-    self.myPlistNamesArray = [[NSMutableArray alloc] initWithCapacity:self.myPlistArray.count];
+    self.students = [[NSMutableArray alloc] initWithCapacity:self.myPlistArray.count];
     
     for (NSDictionary *dictionary in self.myPlistArray)
     {
         ZMBStudent *newStudent = [[ZMBStudent alloc] init];
         newStudent.studentName = [dictionary objectForKey:@"name"];
-        [self.myPlistNamesArray addObject:newStudent];
-        NSLog(@"%@", self.myPlistNamesArray);
+        newStudent.studentGithubName = [dictionary objectForKey:@"github"];
+        newStudent.studentTwitterName = [dictionary objectForKey:@"twitter"];
+        [self.students addObject:newStudent];
+        NSLog(@"%@", self.myPlistArray);
     }
     
 }
@@ -83,7 +86,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.myPlistNamesArray.count;
+    return self.students.count;
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -93,15 +96,16 @@
 //    } else {
 //        return @"Instructors";
 //    }
-//}
+//} 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ZMBCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
 //    ZMBStudent *tempStudent = [self.myPlistNamesArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [[self.myPlistNamesArray objectAtIndex:indexPath.row] studentName];
+    cell.studentName.text = [[self.students objectAtIndex:indexPath.row] studentName];
+    
     
     return cell;
 }
@@ -145,16 +149,21 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"detailViewSegue"]) {
+        ZMBDetailViewController *detailVC = (ZMBDetailViewController *)segue.destinationViewController;
+        detailVC.delegate = self;
+        detailVC.student = _students[[self.tableView indexPathForSelectedRow].row];
+    }
 }
 
- */
+- (void)studentWasEdited:(ZMBStudent *)student
+{
+    NSLog(@"studentWasEdited happened");
+}
 
 @end
