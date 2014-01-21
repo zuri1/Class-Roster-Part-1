@@ -43,7 +43,7 @@
 {
     [super viewDidLoad];
 	
-    
+    NSLog(@"viewDidLoad");
 }
 
 - (void)didReceiveMemoryWarning
@@ -124,6 +124,28 @@
 {
     NSURL *docsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     return [docsURL path];
+}
+
+#pragma mark - additional lifecycle events
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"viewWillAppear");
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"viewDidAppear");
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"viewWillDisappear");
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"viewDidDisappear");
 }
 
 @end
