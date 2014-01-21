@@ -24,6 +24,16 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    
+}
+
+- (void)setMyImage:(UIImage *)myImage
+{
+    _myImage = myImage;
+    self.imageView.image = _myImage;
+    self.imageView.clipsToBounds = YES;
+    self.imageView.layer.cornerRadius = 25.f;
+
 }
 
 @end

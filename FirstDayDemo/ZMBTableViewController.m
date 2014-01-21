@@ -103,7 +103,7 @@
     
 //    ZMBStudent *tempStudent = [self.myPlistNamesArray objectAtIndex:indexPath.row];
     cell.studentName.text = [[self.students objectAtIndex:indexPath.row] studentName];
-    cell.myImageView.image = [[self.students objectAtIndex:indexPath.row] studentImage];
+    cell.myImage = [[self.students objectAtIndex:indexPath.row] studentImage];
     
     return cell;
 }

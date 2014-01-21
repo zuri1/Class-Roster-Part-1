@@ -49,7 +49,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="myImageView" destination="KIg-bC-CBM" id="gEz-vF-gvj"/>
                                     <outlet property="studentName" destination="n4A-WY-QXx" id="oKe-mn-6ze"/>
                                     <segue destination="FmQ-c4-Cnz" kind="push" identifier="detailViewSegue" id="02Y-sW-njV"/>
                                 </connections>

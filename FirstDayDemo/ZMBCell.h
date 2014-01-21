@@ -13,7 +13,7 @@
 
 @property (nonatomic) ZMBStudent *student;
 
-@property (strong, nonatomic) IBOutlet UIImageView *myImageView;
+@property (strong, nonatomic) UIImage *myImage;
 @property (nonatomic) IBOutlet UILabel *studentName;
 
 @end
