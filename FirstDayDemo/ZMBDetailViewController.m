@@ -9,21 +9,25 @@
 #import "ZMBDetailViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface ZMBDetailViewController ()
+@interface ZMBDetailViewController () <UITextFieldDelegate>
 
 - (IBAction)goBackToTableViewController:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *theImageView;
+@property (strong, nonatomic) IBOutlet UITextField *twitterTextField;
+@property (strong, nonatomic) IBOutlet UITextField *githubTextField;
 
 @end
 
 @implementation ZMBDetailViewController
 
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+
     }
     return self;
 }
@@ -44,6 +48,17 @@
     [super viewDidLoad];
 	
     NSLog(@"viewDidLoad");
+    
+    self.twitterTextField.delegate = self;
+    self.githubTextField.delegate = self;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField) {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
