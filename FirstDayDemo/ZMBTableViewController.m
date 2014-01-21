@@ -44,8 +44,6 @@
     
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
     self.myPlistArray = [NSArray arrayWithContentsOfFile:plistPath];
-//    NSDictionary *plistKeyDict = [self.myPlistArray objectAtIndex:0];
-//    NSDictionary *nameKeyDict = [plistKeyDict objectForKey:@"name"];
     
     self.students = [[NSMutableArray alloc] initWithCapacity:self.myPlistArray.count];
     
@@ -105,7 +103,7 @@
     
 //    ZMBStudent *tempStudent = [self.myPlistNamesArray objectAtIndex:indexPath.row];
     cell.studentName.text = [[self.students objectAtIndex:indexPath.row] studentName];
-    
+    cell.myImageView.image = [[self.students objectAtIndex:indexPath.row] studentImage];
     
     return cell;
 }
@@ -163,6 +161,7 @@
 
 - (void)studentWasEdited:(ZMBStudent *)student
 {
+    [self.tableView reloadData];
     NSLog(@"studentWasEdited happened");
 }
 

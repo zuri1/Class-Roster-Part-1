@@ -29,7 +29,14 @@
 }
 
 - (IBAction)goBackToTableViewController:(id)sender {
+    [self saveStudent];
+    [self.delegate studentWasEdited:self.student];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
+- (void)saveStudent
+{
+    [self.student setStudentImage:self.theImageView.image];
 }
 
 - (void)viewDidLoad
@@ -105,6 +112,11 @@
                 }
             }];
         }
+        
+        NSData *jpgData = UIImageJPEGRepresentation(editedImage, 0.5);
+        NSString *jpgPath = [[self docsDirPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpeg", self.student.studentName]];
+        [jpgData writeToFile:jpgPath atomically:YES];
+        
     }];
 }
 
