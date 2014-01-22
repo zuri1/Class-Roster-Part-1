@@ -26,4 +26,28 @@
     return self;
 }
 
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    self.studentName = [aDecoder decodeObjectForKey:@"studentName"];
+    self.studentTwitterName = [aDecoder decodeObjectForKey:@"studentTwitterName"];
+    self.studentGithubName = [aDecoder decodeObjectForKey:@"studentGithubName"];
+    self.studentImage = [aDecoder decodeObjectForKey:@"studentImage"];
+
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.studentName forKey:@"studentName"];
+    [aCoder encodeObject:self.studentTwitterName forKey:@"studentTwitterName"];
+    [aCoder encodeObject:self.studentGithubName forKey:@"studentGithubName"];
+    [aCoder encodeObject:self.studentImage forKey:@"studentImage"];
+    
+}
+
 @end

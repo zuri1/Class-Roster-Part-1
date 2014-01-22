@@ -29,20 +29,41 @@
     return self;
 }
 
+- (NSData *)loadDataFromDisk
+{
+    NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    docsPath = [docsPath stringByAppendingString:@"Bootcamp.plist"];
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSString *plistPath;
+    
+    if ([fileManager fileExistsAtPath:docsPath]) {
+        plistPath = docsPath;
+    } else {
+        NSError *err;
+        plistPath = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
+        [fileManager copyItemAtPath:plistPath toPath:docsPath error:&err];
+        if (err) {
+            NSLog(@"File copy error: %@", err);
+        } else {
+            return [self loadDataFromDisk];
+        }
+    }
+    return [NSData dataWithContentsOfFile:plistPath];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     self.title = @"iOS Bootcamp";
     
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [refresh addTarget:self action:@selector(doSomething) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
     
 #pragma mark - load array from plist
     
+    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
+    NSString *docsDir = [self docsDirPath];
+    
     self.myPlistArray = [NSArray arrayWithContentsOfFile:plistPath];
     
     self.students = [[NSMutableArray alloc] initWithCapacity:self.myPlistArray.count];
@@ -53,10 +74,36 @@
         newStudent.studentName = [dictionary objectForKey:@"name"];
         newStudent.studentGithubName = [dictionary objectForKey:@"github"];
         newStudent.studentTwitterName = [dictionary objectForKey:@"twitter"];
+        
+        NSString *imagePath = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpeg", newStudent.studentName]];
+        NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
+        if (imageData) {
+            NSLog(@"Got An Image");
+            UIImage *image = [UIImage imageWithData:imageData];
+            newStudent.studentImage = image;
+        } else {
+            //Placeholder image, like placekitten
+        }
+        
         [self.students addObject:newStudent];
-        NSLog(@"%@", self.myPlistArray);
+        
+        [NSKeyedArchiver archiveRootObject:self.students toFile:[NSString stringWithFormat:@"%@/Students", docsDir]];
+        
     }
     
+#pragma mark - pull-to-refresh
+    
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [refresh addTarget:self action:@selector(doSomething) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+
+}
+
+- (NSString *)docsDirPath
+{
+    NSURL *docsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [docsURL path];
 }
 
 - (void)stopRefresh
