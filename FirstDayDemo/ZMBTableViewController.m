@@ -32,7 +32,7 @@
 - (NSData *)loadDataFromDisk
 {
     NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    docsPath = [docsPath stringByAppendingString:@"Bootcamp.plist"];
+    docsPath = [docsPath stringByAppendingPathComponent:@"Bootcamp.plist"];
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSString *plistPath;
     
@@ -51,6 +51,49 @@
     return [NSData dataWithContentsOfFile:plistPath];
 }
 
+- (void)movePlistFromBundle
+{
+    NSString *docsPath = [[self docsDirPath] stringByAppendingPathComponent:@"Bootcamp.plist"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:docsPath]) {
+        NSLog(@"File did exist");
+        _students = [NSKeyedUnarchiver unarchiveObjectWithFile:docsPath];
+        for (ZMBStudent *student in self.students) {
+            NSString *docsDir = [self docsDirPath];
+            NSString *imagePath = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpeg", student.studentName]];
+            NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
+            if (imageData) {
+                NSLog(@"Got An Image");
+                UIImage *image = [UIImage imageWithData:imageData];
+                student.studentImage = image;
+            } else {
+                //Placeholder image, like placekitten
+            }
+        }
+        return;
+    } else {
+        NSLog(@"File didn't exist");
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
+        NSString *docsDir = [self docsDirPath];
+        
+        self.myPlistArray = [NSArray arrayWithContentsOfFile:plistPath];
+        
+        self.students = [[NSMutableArray alloc] init];
+        
+        for (NSDictionary *dictionary in self.myPlistArray)
+        {
+            ZMBStudent *newStudent = [[ZMBStudent alloc] init];
+            newStudent.studentName = [dictionary objectForKey:@"studentName"];
+            newStudent.studentGithubName = [dictionary objectForKey:@"github"];
+            newStudent.studentTwitterName = [dictionary objectForKey:@"twitter"];
+            
+            
+            [self.students addObject:newStudent];
+        }
+        
+        [NSKeyedArchiver archiveRootObject:self.students toFile:[docsDir stringByAppendingPathComponent:@"Bootcamp.plist"]];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -61,36 +104,10 @@
 #pragma mark - load array from plist
     
     
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
-    NSString *docsDir = [self docsDirPath];
+    [self movePlistFromBundle];
     
-    self.myPlistArray = [NSArray arrayWithContentsOfFile:plistPath];
     
-    self.students = [[NSMutableArray alloc] initWithCapacity:self.myPlistArray.count];
-    
-    for (NSDictionary *dictionary in self.myPlistArray)
-    {
-        ZMBStudent *newStudent = [[ZMBStudent alloc] init];
-        newStudent.studentName = [dictionary objectForKey:@"name"];
-        newStudent.studentGithubName = [dictionary objectForKey:@"github"];
-        newStudent.studentTwitterName = [dictionary objectForKey:@"twitter"];
-        
-        NSString *imagePath = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpeg", newStudent.studentName]];
-        NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
-        if (imageData) {
-            NSLog(@"Got An Image");
-            UIImage *image = [UIImage imageWithData:imageData];
-            newStudent.studentImage = image;
-        } else {
-            //Placeholder image, like placekitten
-        }
-        
-        [self.students addObject:newStudent];
-        
-        [NSKeyedArchiver archiveRootObject:self.students toFile:[NSString stringWithFormat:@"%@/Students", docsDir]];
-        
-    }
-    
+    NSLog(@"%@", self.students);
 #pragma mark - pull-to-refresh
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];

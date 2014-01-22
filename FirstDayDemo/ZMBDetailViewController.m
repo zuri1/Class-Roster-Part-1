@@ -32,6 +32,13 @@
     return self;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.student.studentTwitterName = self.twitterTextField.text;
+    NSLog(@"%@", self.student.studentTwitterName);
+    self.student.studentGithubName = self.githubTextField.text;
+}
+
 - (IBAction)goBackToTableViewController:(id)sender {
     [self saveStudent];
     [self.delegate studentWasEdited:self.student];
@@ -51,6 +58,18 @@
     
     self.twitterTextField.delegate = self;
     self.githubTextField.delegate = self;
+    
+    if ([self.student.studentTwitterName isEqualToString:@""]) {
+        self.twitterTextField.text = @"Type twitter name";
+    } else {
+        self.twitterTextField.text = self.student.studentTwitterName;
+    }
+    if ([self.student.studentGithubName isEqualToString:@""]){
+        self.githubTextField.text = @"Type github name";
+    } else {
+        self.githubTextField.text = self.student.studentGithubName;
+    }
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

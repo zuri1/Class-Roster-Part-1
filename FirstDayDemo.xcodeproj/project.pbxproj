@@ -22,8 +22,8 @@
 		8A3C2D961884616F004A4B1D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3C2D781884616F004A4B1D /* UIKit.framework */; };
 		8A3C2D9E1884616F004A4B1D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A3C2D9C1884616F004A4B1D /* InfoPlist.strings */; };
 		8A3C2DA01884616F004A4B1D /* FirstDayDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C2D9F1884616F004A4B1D /* FirstDayDemoTests.m */; };
+		8A9383941890752B004F188E /* Bootcamp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A9383931890752B004F188E /* Bootcamp.plist */; };
 		8AAA517D1885E60A00E81E87 /* ZMBStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA517C1885E60A00E81E87 /* ZMBStudent.m */; };
-		8AAA517F1885EC7400E81E87 /* Bootcamp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA517E1885EC7400E81E87 /* Bootcamp.plist */; };
 		8AABBA87188C9B5F00916CD3 /* ZMBCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBA86188C9B5F00916CD3 /* ZMBCell.m */; };
 /* End PBXBuildFile section */
 
@@ -59,9 +59,9 @@
 		8A3C2D9B1884616F004A4B1D /* FirstDayDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FirstDayDemoTests-Info.plist"; sourceTree = "<group>"; };
 		8A3C2D9D1884616F004A4B1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8A3C2D9F1884616F004A4B1D /* FirstDayDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstDayDemoTests.m; sourceTree = "<group>"; };
+		8A9383931890752B004F188E /* Bootcamp.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Bootcamp.plist; sourceTree = "<group>"; };
 		8AAA517B1885E60A00E81E87 /* ZMBStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBStudent.h; sourceTree = "<group>"; };
 		8AAA517C1885E60A00E81E87 /* ZMBStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBStudent.m; sourceTree = "<group>"; };
-		8AAA517E1885EC7400E81E87 /* Bootcamp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Bootcamp.plist; sourceTree = "<group>"; };
 		8AABBA85188C9B5F00916CD3 /* ZMBCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBCell.h; sourceTree = "<group>"; };
 		8AABBA86188C9B5F00916CD3 /* ZMBCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,8 +143,8 @@
 		8A3C2D7B1884616F004A4B1D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8AAA517E1885EC7400E81E87 /* Bootcamp.plist */,
 				8A3C2D7C1884616F004A4B1D /* FirstDayDemo-Info.plist */,
+				8A9383931890752B004F188E /* Bootcamp.plist */,
 				8A3C2D7D1884616F004A4B1D /* InfoPlist.strings */,
 				8A3C2D801884616F004A4B1D /* main.m */,
 				8A3C2D821884616F004A4B1D /* FirstDayDemo-Prefix.pch */,
@@ -248,7 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3C2D8D1884616F004A4B1D /* Images.xcassets in Resources */,
-				8AAA517F1885EC7400E81E87 /* Bootcamp.plist in Resources */,
+				8A9383941890752B004F188E /* Bootcamp.plist in Resources */,
 				8A3C2D7F1884616F004A4B1D /* InfoPlist.strings in Resources */,
 				8A3C2D881884616F004A4B1D /* Main.storyboard in Resources */,
 			);
